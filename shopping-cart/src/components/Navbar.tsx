@@ -14,8 +14,10 @@ import { useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router";
+import { useCart } from "../pages/CartPage/CartPageContextProvider";
 
 const NavBar = () => {
+  const { cart } = useCart();
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (state: boolean) => () => {
@@ -39,7 +41,10 @@ const NavBar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <ShoppingCartIcon />
+          <Link to="/products/cart">
+            <ShoppingCartIcon />
+            {cart.length > 0 && <span>{cart.length}</span>}
+          </Link>
         </Toolbar>
       </AppBar>
 
@@ -53,13 +58,13 @@ const NavBar = () => {
           </IconButton>
 
           <List>
-            <Link to="/category/mensclothing">
+            <Link to="/products/category/mensclothing">
               <ListItem>
                 <ListItemText primary="Men's clothing" />
               </ListItem>
             </Link>
 
-            <Link to="/category/womenscloting">
+            <Link to="/products/category/womensclothing">
               <ListItem>
                 <ListItemText primary="Women's clothing" />
               </ListItem>
@@ -77,13 +82,13 @@ const NavBar = () => {
               </ListItem>
             </Link>
 
-            <Link to="/category/shoes">
+            <Link to="/products/category/shoes">
               <ListItem>
                 <ListItemText primary="Shoes" />
               </ListItem>
             </Link>
 
-            <Link to="/category/pants">
+            <Link to="/products/category/pants">
               <ListItem>
                 <ListItemText primary="Pants" />
               </ListItem>

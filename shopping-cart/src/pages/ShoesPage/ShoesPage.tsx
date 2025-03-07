@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useCart } from "../CartPage/CartPageContextProvider";
 
-const JewelleryPage = () => {
-  const { productsList, fetchProducts, addProduct } = useCart();
+const ShoesPage = () => {
+  const { productsList, addProduct, fetchProducts } = useCart();
 
   useEffect(() => {
-    fetchProducts("jewellery");
+    fetchProducts("shoes");
   }, []);
 
   return (
     <div>
-      <h1>Jewellery</h1>
+      <h1>Shoes</h1>
       <ul>
         {productsList.map((product) => (
           <li key={product.id}>
@@ -25,4 +25,4 @@ const JewelleryPage = () => {
   );
 };
 
-export default JewelleryPage;
+export default ShoesPage;
